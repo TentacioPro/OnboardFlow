@@ -50,6 +50,14 @@ const ExtractionPanel = ({
         }
     };
 
+    const scrollToSection = (id) => {
+        setActiveSection(id);
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    };
+
     return (
         <div className="h-full bg-white flex flex-col">
             {/* Header */}
@@ -59,7 +67,7 @@ const ExtractionPanel = ({
                     {['Summary', 'Access', 'Gaps', 'Message'].map(s => (
                         <button
                             key={s}
-                            onClick={() => setActiveSection(s.toLowerCase())}
+                            onClick={() => scrollToSection(s.toLowerCase())}
                             className={`px-3 py-1 rounded-md transition-all ${activeSection === s.toLowerCase() ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
                         >
                             {s}
@@ -71,7 +79,7 @@ const ExtractionPanel = ({
             <div className="flex-1 overflow-y-auto custom-scroll p-6 space-y-8 bg-slate-50/50">
 
                 {/* SUMMARY SECTION */}
-                <section id="summary" className="space-y-4">
+                <section id="summary" className="space-y-4 scroll-mt-4">
                     <div className="flex items-center justify-between">
                         <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
                             <ChevronDown className="w-4 h-4 mr-2" /> Employment Summary
@@ -79,7 +87,7 @@ const ExtractionPanel = ({
                         <button className="text-slate-400 hover:text-slate-600"><Copy className="w-4 h-4" /></button>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {summaryData.map(item => (
                             <div
                                 key={item.id}
@@ -165,7 +173,7 @@ const ExtractionPanel = ({
                 </section>
 
                 {/* ACCESS SECTION */}
-                <section id="access" className="space-y-4 pt-4 border-t border-slate-200">
+                <section id="access" className="space-y-4 pt-4 border-t border-slate-200 scroll-mt-4">
                     <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
                         <ChevronDown className="w-4 h-4 mr-2" /> Access & Equipment
                     </h3>
@@ -200,7 +208,7 @@ const ExtractionPanel = ({
                 </section>
 
                 {/* GAPS / COMPLIANCE */}
-                <section id="gaps" className="space-y-4 pt-4 border-t border-slate-200">
+                <section id="gaps" className="space-y-4 pt-4 border-t border-slate-200 scroll-mt-4">
                     <div className="flex items-center justify-between">
                         <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
                             <ChevronDown className="w-4 h-4 mr-2" /> Missing Items
@@ -234,7 +242,7 @@ const ExtractionPanel = ({
                 </section>
 
                 {/* MESSAGE EDITOR */}
-                <section id="message" className="space-y-4 pt-4 border-t border-slate-200">
+                <section id="message" className="space-y-4 pt-4 border-t border-slate-200 scroll-mt-4">
                     <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
                         <ChevronDown className="w-4 h-4 mr-2" /> Welcome Message
                     </h3>
