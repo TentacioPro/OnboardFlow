@@ -1,0 +1,113 @@
+[
+  {
+    "id": "c-101",
+    "candidateName": "Sarah Jenkins",
+    "role": "Senior UX Designer",
+    "department": "Product Design",
+    "startDate": "2023-11-15",
+    "status": "in-progress",
+    "avatarUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    "documents": [
+      {
+        "id": "doc-1763908699324",
+        "name": "HR_Onboarding_Document.docx",
+        "size": "0.04MB",
+        "uploadedAt": "2025-11-23T14:38:19.325Z",
+        "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "analysis": {
+          "extracted": {
+            "employee_name": "Alice Johnson",
+            "role": "Senior Backend Engineer",
+            "start_date": "2025-12-01",
+            "missing_fields": [
+              "emergency_contact"
+            ]
+          },
+          "compliance": {
+            "nda_signed": true,
+            "right_to_work": "Pending Verification",
+            "risk_level": "LOW"
+          },
+          "actions": [
+            {
+              "id": "act_1",
+              "text": "Verify Passport",
+              "type": "compliance"
+            },
+            {
+              "id": "act_2",
+              "text": "Provision MacBook Pro",
+              "type": "IT"
+            }
+          ],
+          "communications": {
+            "subject": "Welcome to the team, Alice!",
+            "body": "Hi Alice, we are excited to have you join..."
+          }
+        }
+      }
+    ],
+    "summary": [
+      {
+        "id": "sum-0",
+        "field": "EMPLOYEE NAME",
+        "value": "Alice Johnson",
+        "status": "pending"
+      },
+      {
+        "id": "sum-1",
+        "field": "ROLE",
+        "value": "Senior Backend Engineer",
+        "status": "pending"
+      },
+      {
+        "id": "sum-2",
+        "field": "START DATE",
+        "value": "2025-12-01",
+        "status": "pending"
+      },
+      {
+        "id": "sum-3",
+        "field": "MISSING FIELDS",
+        "value": [
+          "emergency_contact"
+        ],
+        "status": "pending"
+      }
+    ],
+    "actions": [
+      {
+        "id": "a1",
+        "text": "Order MacBook Pro M3",
+        "completed": true
+      },
+      {
+        "id": "a2",
+        "text": "Create AWS IAM User",
+        "completed": true
+      },
+      {
+        "id": "a3",
+        "text": "Schedule Team Lunch",
+        "completed": true
+      },
+      {
+        "id": "a4",
+        "text": "Assign Onboarding Buddy",
+        "completed": false
+      }
+    ],
+    "auditLogs": [
+      {
+        "id": "l1",
+        "timestamp": "2023-11-01 09:00:00",
+        "user": "System",
+        "action": "Case Created",
+        "field": "-",
+        "oldValue": "-",
+        "newValue": "-",
+        "source": "Automated"
+      }
+    ]
+  }
+]

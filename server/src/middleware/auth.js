@@ -1,18 +1,31 @@
-const authorize = (roles = []) => {
-  if (typeof roles === 'string') {
-    roles = [roles];
-  }
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-  return (req, res, next) => {
-    const role = req.headers['x-role'] || 'candidate'; // Default to candidate
+const authenticateToken = (req, res, next) => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
 
-    if (roles.length && !roles.includes(role)) {
-      return res.status(403).json({ message: 'Forbidden: Insufficient permissions' });
+    if (!token) {
+        return res.status(401).json({ message: 'Access token required' });
     }
 
-    req.user = { role };
-    next();
-  };
+    jwt.verify(token, process.env.JWT_SECRET || 'secret', (err, user) => {
+        if (err) {
+            return res.status(403).json({ message: 'Invalid or expired token' });
+        }
+        req.user = user;
+        next();
+    });
 };
 
-module.exports = authorize;
+const authorizeRole = (roles) => {
+    return (req, res, next) => {
+        if (!req.user || !roles.includes(req.user.role)) {
+            return res.status(403).json({ message: 'Insufficient permissions' });
+        }
+        next();
+    };
+};
+
+module.exports = { authenticateToken, authorizeRole };
+

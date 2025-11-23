@@ -10,7 +10,11 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/cases', require('./routes/caseRoutes'));
+const caseRoutes = require('./routes/caseRoutes');
+const authRoutes = require('./routes/authRoutes');
+
+app.use('/api/auth', authRoutes);
+app.use('/api/cases', caseRoutes);
 
 app.get('/', (req, res) => {
   res.send('HR Onboarding Assistant API');

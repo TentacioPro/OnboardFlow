@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { getCases, getCaseById } = require('../controllers/caseController');
-const authorize = require('../middleware/auth');
+const { getCases, getCaseById, uploadDocument, upload } = require('../controllers/caseController');
+const { authenticateToken, authorizeRole } = require('../middleware/auth');
 
-router.get('/', authorize(['hr-manager', 'candidate']), getCases);
-router.get('/:id', authorize(['hr-manager', 'candidate']), getCaseById);
+router.get('/', authenticateToken, authorizeRole(['admin', 'hr']), getCases);
+router.get('/:id', authenticateToken, authorizeRole(['admin', 'hr', 'candidate']), getCaseById);
+router.post('/:id/documents', authenticateToken, authorizeRole(['admin', 'hr']), upload.single('file'), uploadDocument);
 
 module.exports = router;
