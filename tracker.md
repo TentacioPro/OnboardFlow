@@ -44,3 +44,10 @@
     - [x] Verify UI flows
     - [x] Verify API endpoints
     - [x] Create walkthrough.md
+
+- [x] Git & Deployment
+    - [x] Initialize Git and create `OnboardFlow` branch
+    - [x] Push to remote `TentacioPro/OnboardFlow`
+    - [x] Merge to `main`
+    - [x] Configure `gh-pages` deployment
+    - [x] Deploy to GitHub Pages
