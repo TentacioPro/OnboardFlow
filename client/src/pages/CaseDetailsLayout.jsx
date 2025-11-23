@@ -1,13 +1,15 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useParams, Outlet, NavLink, useNavigate } from 'react-router-dom';
-import { ArrowLeft, FileText, Sparkles, CheckSquare, ShieldAlert } from 'lucide-react';
+import { ArrowLeft, FileText, Sparkles, CheckSquare, ShieldAlert, History } from 'lucide-react';
 import { useCases } from '../context/CaseContext';
 import StatusBadge from '../components/StatusBadge';
+import AuditModal from '../components/AuditModal';
 
 const CaseDetailsLayout = () => {
     const { id } = useParams();
     const { getCase } = useCases();
     const navigate = useNavigate();
+    const [isAuditOpen, setIsAuditOpen] = useState(false);
 
     const currentCase = getCase(id || '');
 
@@ -35,12 +37,20 @@ const CaseDetailsLayout = () => {
         <div className="flex flex-col h-[calc(100vh-8rem)]">
             {/* Case Header */}
             <div className="mb-6">
-                <button
-                    onClick={() => navigate('/cases')}
-                    className="flex items-center gap-1 text-sm text-slate-500 hover:text-indigo-600 mb-4 transition-colors"
-                >
-                    <ArrowLeft size={16} /> Back to Cases
-                </button>
+                <div className="flex justify-between items-center mb-4">
+                    <button
+                        onClick={() => navigate('/cases')}
+                        className="flex items-center gap-1 text-sm text-slate-500 hover:text-indigo-600 transition-colors"
+                    >
+                        <ArrowLeft size={16} /> Back to Cases
+                    </button>
+                    <button
+                        onClick={() => setIsAuditOpen(true)}
+                        className="flex items-center gap-2 text-sm text-slate-500 hover:text-indigo-600 transition-colors px-3 py-1.5 rounded-md hover:bg-slate-50"
+                    >
+                        <History size={16} /> View Audit Log
+                    </button>
+                </div>
 
                 <div className="bg-white border border-slate-200 rounded-lg p-6 shadow-sm">
                     <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
@@ -144,6 +154,12 @@ const CaseDetailsLayout = () => {
             <div className="flex-1 min-h-0 overflow-y-auto">
                 <Outlet context={{ currentCase }} />
             </div>
+
+            <AuditModal
+                isOpen={isAuditOpen}
+                onClose={() => setIsAuditOpen(false)}
+                logs={currentCase.auditLogs || []}
+            />
         </div>
     );
 };

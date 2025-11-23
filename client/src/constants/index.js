@@ -24,6 +24,12 @@ export const INITIAL_DATA = [
       { id: 'a3', text: 'Schedule Team Lunch', completed: true },
       { id: 'a4', text: 'Assign Onboarding Buddy', completed: false },
     ],
+    auditLogs: [
+      { id: 'l1', timestamp: '2023-11-01 09:00:00', user: 'System', action: 'Case Created', field: '-', oldValue: '-', newValue: '-', source: 'Automated' },
+      { id: 'l2', timestamp: '2023-11-01 09:05:00', user: 'System', action: 'Document Uploaded', field: 'Documents', oldValue: '-', newValue: 'Offer_Letter_Signed.pdf', source: 'Portal' },
+      { id: 'l3', timestamp: '2023-11-01 09:10:00', user: 'AI Agent', action: 'Data Extracted', field: 'Salary', oldValue: '-', newValue: '$160,000', source: 'Watsonx' },
+      { id: 'l4', timestamp: '2023-11-01 10:30:00', user: 'HR Manager', action: 'Verified', field: 'Salary', oldValue: 'Pending', newValue: 'Accepted', source: 'Dashboard' },
+    ],
   },
   {
     id: 'c-102',
