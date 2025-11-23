@@ -34,24 +34,24 @@ const DocumentViewer = ({
     };
 
     return (
-        <div className="flex h-full bg-zinc-100/50 flex-col relative overflow-hidden">
+        <div className="flex h-full bg-slate-100/50 flex-col relative overflow-hidden">
             {/* Header */}
-            <div className="h-12 bg-white border-b border-zinc-200 flex items-center justify-between px-4 shrink-0 shadow-sm z-10">
+            <div className="h-12 bg-white border-b border-slate-200 flex items-center justify-between px-4 shrink-0 shadow-sm z-10">
                 <div className="flex items-center space-x-2">
-                    <span className="text-sm font-semibold text-zinc-700 flex items-center">
-                        <FileText className="w-4 h-4 mr-2 text-zinc-400" /> Source Documents
+                    <span className="text-sm font-semibold text-slate-700 flex items-center">
+                        <FileText className="w-4 h-4 mr-2 text-slate-400" /> Source Documents
                     </span>
                 </div>
-                <div className="flex items-center bg-zinc-50 rounded-lg p-1 border border-zinc-200">
-                    <button onClick={() => onZoomChange(Math.max(50, zoom - 25))} className="p-1.5 hover:bg-white rounded shadow-sm text-zinc-600">
+                <div className="flex items-center bg-slate-50 rounded-lg p-1 border border-slate-200">
+                    <button onClick={() => onZoomChange(Math.max(50, zoom - 25))} className="p-1.5 hover:bg-white rounded shadow-sm text-slate-600">
                         <ZoomOut className="w-4 h-4" />
                     </button>
-                    <span className="w-16 text-center text-xs font-mono text-zinc-600">{zoom}%</span>
-                    <button onClick={() => onZoomChange(Math.min(200, zoom + 25))} className="p-1.5 hover:bg-white rounded shadow-sm text-zinc-600">
+                    <span className="w-16 text-center text-xs font-mono text-slate-600">{zoom}%</span>
+                    <button onClick={() => onZoomChange(Math.min(200, zoom + 25))} className="p-1.5 hover:bg-white rounded shadow-sm text-slate-600">
                         <ZoomIn className="w-4 h-4" />
                     </button>
-                    <div className="w-px h-4 bg-zinc-200 mx-2"></div>
-                    <button onClick={() => onZoomChange(100)} className="p-1.5 hover:bg-white rounded shadow-sm text-zinc-600" title="Fit Page">
+                    <div className="w-px h-4 bg-slate-200 mx-2"></div>
+                    <button onClick={() => onZoomChange(100)} className="p-1.5 hover:bg-white rounded shadow-sm text-slate-600" title="Fit Page">
                         <Maximize className="w-4 h-4" />
                     </button>
                 </div>
@@ -59,7 +59,7 @@ const DocumentViewer = ({
 
             <div className="flex-1 flex overflow-hidden relative">
                 {/* Thumbnails Sidebar */}
-                <div className={`w-[140px] bg-zinc-50 border-r border-zinc-200 flex flex-col p-4 overflow-y-auto custom-scroll transition-all duration-300 ${showThumbnails ? 'translate-x-0' : '-translate-x-full absolute h-full'}`}>
+                <div className={`w-[140px] bg-slate-50 border-r border-slate-200 flex flex-col p-4 overflow-y-auto custom-scroll transition-all duration-300 ${showThumbnails ? 'translate-x-0' : '-translate-x-full absolute h-full'}`}>
                     <div className="space-y-4">
                         {document.pages.map((p) => {
                             // Check confidence of items on this page
@@ -71,22 +71,22 @@ const DocumentViewer = ({
                                 <div
                                     key={p.pageNumber}
                                     onClick={() => onPageChange(p.pageNumber)}
-                                    className={`cursor-pointer group relative ${currentPage === p.pageNumber ? 'ring-2 ring-blue-500 rounded-sm' : ''}`}
+                                    className={`cursor-pointer group relative ${currentPage === p.pageNumber ? 'ring-2 ring-indigo-500 rounded-sm' : ''}`}
                                 >
-                                    <div className="aspect-[1/1.41] bg-white border border-zinc-300 shadow-sm flex flex-col p-2 text-[4px] leading-relaxed text-zinc-300 overflow-hidden hover:border-blue-400 transition-colors">
+                                    <div className="aspect-[1/1.41] bg-white border border-slate-300 shadow-sm flex flex-col p-2 text-[4px] leading-relaxed text-slate-300 overflow-hidden hover:border-indigo-400 transition-colors">
                                         {/* Thumbnail Mock Lines */}
-                                        <div className="w-3/4 h-1 bg-zinc-200 mb-1"></div>
-                                        <div className="w-full h-0.5 bg-zinc-200 mb-0.5"></div>
-                                        <div className="w-5/6 h-0.5 bg-zinc-200 mb-0.5"></div>
-                                        <div className="w-full h-0.5 bg-zinc-200 mb-2"></div>
-                                        <div className="w-1/2 h-0.5 bg-zinc-200 mb-0.5"></div>
-                                        <div className="w-full h-0.5 bg-zinc-200"></div>
+                                        <div className="w-3/4 h-1 bg-slate-200 mb-1"></div>
+                                        <div className="w-full h-0.5 bg-slate-200 mb-0.5"></div>
+                                        <div className="w-5/6 h-0.5 bg-slate-200 mb-0.5"></div>
+                                        <div className="w-full h-0.5 bg-slate-200 mb-2"></div>
+                                        <div className="w-1/2 h-0.5 bg-slate-200 mb-0.5"></div>
+                                        <div className="w-full h-0.5 bg-slate-200"></div>
                                     </div>
                                     <div className="flex justify-between items-center mt-1">
-                                        <span className={`text-xs font-medium ${currentPage === p.pageNumber ? 'text-blue-600' : 'text-zinc-500'}`}>Page {p.pageNumber}</span>
+                                        <span className={`text-xs font-medium ${currentPage === p.pageNumber ? 'text-indigo-600' : 'text-slate-500'}`}>Page {p.pageNumber}</span>
                                         {hasIssue ? <div className="w-2 h-2 rounded-full bg-red-500"></div> :
-                                            hasWarning ? <div className="w-2 h-2 rounded-full bg-yellow-500"></div> :
-                                                <div className="w-2 h-2 rounded-full bg-green-500"></div>}
+                                            hasWarning ? <div className="w-2 h-2 rounded-full bg-amber-500"></div> :
+                                                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>}
                                     </div>
                                 </div>
                             );
@@ -95,7 +95,7 @@ const DocumentViewer = ({
                 </div>
 
                 {/* Main Viewer Canvas */}
-                <div className="flex-1 bg-zinc-200/50 flex justify-center p-8 overflow-auto custom-scroll relative">
+                <div className="flex-1 bg-slate-200/50 flex justify-center p-8 overflow-auto custom-scroll relative">
 
                     {/* Document Page Mock */}
                     <div
@@ -107,7 +107,7 @@ const DocumentViewer = ({
                         }}
                     >
                         {/* Text Content Rendering */}
-                        <div className="space-y-4 font-serif text-zinc-900 leading-relaxed" style={{ fontSize: `${16 * (zoom / 100)}px` }}>
+                        <div className="space-y-4 font-serif text-slate-900 leading-relaxed" style={{ fontSize: `${16 * (zoom / 100)}px` }}>
                             {currentContent.map((line, idx) => (
                                 <p key={idx} className={line === "" ? "h-4" : ""}>{line}</p>
                             ))}
@@ -136,7 +136,7 @@ const DocumentViewer = ({
                                     >
                                         {/* Label on hover or active */}
                                         {(activeFieldId === item.id || hoveredFieldId === item.id) && (
-                                            <div className="absolute -top-6 left-0 bg-zinc-900 text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap z-50">
+                                            <div className="absolute -top-6 left-0 bg-slate-900 text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap z-50">
                                                 {item.label} ({item.confidence}%)
                                             </div>
                                         )}
@@ -147,32 +147,32 @@ const DocumentViewer = ({
                     </div>
 
                     {/* Floating Page Nav within canvas */}
-                    <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-zinc-800/90 text-white px-4 py-2 rounded-full shadow-lg flex items-center space-x-4 backdrop-blur-sm z-20">
-                        <button disabled={currentPage === 1} onClick={() => onPageChange(currentPage - 1)} className="hover:text-blue-400 disabled:opacity-30"><ChevronLeft className="w-5 h-5" /></button>
+                    <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-slate-800/90 text-white px-4 py-2 rounded-full shadow-lg flex items-center space-x-4 backdrop-blur-sm z-20">
+                        <button disabled={currentPage === 1} onClick={() => onPageChange(currentPage - 1)} className="hover:text-indigo-400 disabled:opacity-30"><ChevronLeft className="w-5 h-5" /></button>
                         <span className="text-sm font-medium">Page {currentPage} of {document.pageCount}</span>
-                        <button disabled={currentPage === document.pageCount} onClick={() => onPageChange(currentPage + 1)} className="hover:text-blue-400 disabled:opacity-30"><ChevronRight className="w-5 h-5" /></button>
+                        <button disabled={currentPage === document.pageCount} onClick={() => onPageChange(currentPage + 1)} className="hover:text-indigo-400 disabled:opacity-30"><ChevronRight className="w-5 h-5" /></button>
                     </div>
                 </div>
             </div>
 
             {/* Document Tabs */}
-            <div className="h-10 bg-zinc-50 border-t border-zinc-200 flex items-center px-2 space-x-1 shrink-0 overflow-x-auto custom-scroll">
-                <div className="flex items-center px-3 py-1.5 bg-white border border-zinc-300 border-b-white rounded-t-md relative -mb-px shadow-sm">
-                    <FileText className="w-3.5 h-3.5 text-blue-600 mr-2" />
-                    <span className="text-xs font-semibold text-blue-700">Contract.pdf</span>
-                    <CheckCircle2 className="w-3 h-3 text-green-500 ml-2" />
+            <div className="h-10 bg-slate-50 border-t border-slate-200 flex items-center px-2 space-x-1 shrink-0 overflow-x-auto custom-scroll">
+                <div className="flex items-center px-3 py-1.5 bg-white border border-slate-300 border-b-white rounded-t-md relative -mb-px shadow-sm">
+                    <FileText className="w-3.5 h-3.5 text-indigo-600 mr-2" />
+                    <span className="text-xs font-semibold text-indigo-700">Contract.pdf</span>
+                    <CheckCircle2 className="w-3 h-3 text-emerald-500 ml-2" />
                 </div>
-                <div className="flex items-center px-3 py-1.5 hover:bg-zinc-100 text-zinc-500 cursor-pointer rounded-t-md transition-colors">
+                <div className="flex items-center px-3 py-1.5 hover:bg-slate-100 text-slate-500 cursor-pointer rounded-t-md transition-colors">
                     <FileText className="w-3.5 h-3.5 mr-2" />
                     <span className="text-xs font-medium">CV.docx</span>
-                    <CheckCircle2 className="w-3 h-3 text-green-500 ml-2" />
+                    <CheckCircle2 className="w-3 h-3 text-emerald-500 ml-2" />
                 </div>
-                <div className="flex items-center px-3 py-1.5 hover:bg-zinc-100 text-zinc-500 cursor-pointer rounded-t-md transition-colors">
+                <div className="flex items-center px-3 py-1.5 hover:bg-slate-100 text-slate-500 cursor-pointer rounded-t-md transition-colors">
                     <FileText className="w-3.5 h-3.5 mr-2" />
                     <span className="text-xs font-medium">ID_Scan.pdf</span>
-                    <AlertTriangle className="w-3 h-3 text-yellow-500 ml-2" />
+                    <AlertTriangle className="w-3 h-3 text-amber-500 ml-2" />
                 </div>
-                <button className="ml-2 w-6 h-6 flex items-center justify-center hover:bg-zinc-200 rounded text-zinc-500">
+                <button className="ml-2 w-6 h-6 flex items-center justify-center hover:bg-slate-200 rounded text-slate-500">
                     <span className="text-lg leading-none">+</span>
                 </button>
             </div>
