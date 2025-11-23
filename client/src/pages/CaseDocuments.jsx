@@ -10,17 +10,20 @@ const CaseDocuments = () => {
     const fileInputRef = useRef(null);
     const [isUploading, setIsUploading] = useState(false);
 
-    const handleFileChange = (e) => {
+    const handleFileChange = async (e) => {
         if (e.target.files && e.target.files[0]) {
             setIsUploading(true);
             const file = e.target.files[0];
 
             // Simulate network delay
-            setTimeout(() => {
-                addDocument(currentCase.id, file);
-                setIsUploading(false);
+            try {
+                await addDocument(currentCase.id, file);
                 if (fileInputRef.current) fileInputRef.current.value = '';
-            }, 1500);
+            } catch (error) {
+                console.error("Upload failed:", error);
+            } finally {
+                setIsUploading(false);
+            }
         }
     };
 
@@ -39,8 +42,8 @@ const CaseDocuments = () => {
                     <label
                         htmlFor="file-upload"
                         className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium shadow-sm cursor-pointer transition-all ${isUploading
-                                ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
-                                : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                            ? 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                            : 'bg-indigo-600 text-white hover:bg-indigo-700'
                             }`}
                     >
                         {isUploading ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
