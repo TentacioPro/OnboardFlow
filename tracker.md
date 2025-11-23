@@ -1,0 +1,46 @@
+# Task Tracker
+
+- [/] Project Initialization & Planning
+    - [x] Explore existing directories
+    - [x] Analyze App.tsx files
+    - [x] Create plan.md
+    - [x] Create tracker.md (this file)
+- [ ] Frontend Consolidation (Client)
+    - [ ] Initialize new Vite + React (JSX) project in `client` directory
+    - [ ] Install dependencies (Tailwind, React Router, Lucide, etc.)
+    - [ ] Migrate `onboardflow` structure (Router, Layouts)
+    - [ ] Migrate `hr-onboarding-assistant` components (Document Viewer, Extraction)
+    - [ ] Migrate `sentinel-hr-onboarding` components (Gap Analysis, Audit)
+    - [ ] Refactor to use JSX and consolidate styles
+- [ ] Backend Setup (Server)
+    - [ ] Initialize Node/Express project in `server` directory
+    - [ ] Setup basic API structure
+    - [ ] Implement RBAC middleware
+# Task Tracker
+
+- [/] Project Initialization & Planning
+    - [x] Explore existing directories
+    - [x] Analyze App.tsx files
+    - [x] Create plan.md
+    - [x] Create tracker.md (this file)
+- [ ] Frontend Consolidation (Client)
+    - [ ] Initialize new Vite + React (JSX) project in `client` directory
+    - [ ] Install dependencies (Tailwind, React Router, Lucide, etc.)
+    - [ ] Migrate `onboardflow` structure (Router, Layouts)
+    - [ ] Migrate `hr-onboarding-assistant` components (Document Viewer, Extraction)
+    - [ ] Migrate `sentinel-hr-onboarding` components (Gap Analysis, Audit)
+    - [ ] Refactor to use JSX and consolidate styles
+- [ ] Backend Setup (Server)
+    - [ ] Initialize Node/Express project in `server` directory
+    - [ ] Setup basic API structure
+    - [ ] Implement RBAC middleware
+    - [ ] Setup IBM Watsonx Orchestrate API integration stubs
+- [ ] Integration & MVP Features
+    - [ ] Connect Frontend to Backend
+    - [ ] Implement Login/Auth flow
+    - [ ] Implement Document Upload & Analysis flow
+    - [ ] Integrate IBM Watsonx Orchestrate Agents
+- [x] Verification
+    - [x] Verify UI flows
+    - [x] Verify API endpoints
+    - [x] Create walkthrough.md
